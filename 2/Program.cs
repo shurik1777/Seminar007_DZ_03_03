@@ -31,8 +31,8 @@ void PrintMatrix(int[,] matr)
     {
         for (int j = 0; j < matr.GetLength(1); j++)
         {
-            if (j < matr.GetLength(1) - 1) Console.Write($"{matr[i, j],4}");
-            else Console.Write($"{matr[i, j],4}");
+            if (j < matr.GetLength(1) - 1) Console.Write($"{matr[i, j]}\t");
+            else Console.Write($"{matr[i, j]}\t");
         }
         Console.WriteLine();
     }
