@@ -32,7 +32,7 @@ void PrintMatrix(double[,] matr)
         for (int m = 0; m < matr.GetLength(1); m++)
         {
             if (m < matr.GetLength(1) - 1) Console.Write($"{matr[i, m],6}");
-            else Console.Write($"{matr[i, m],6}  ");
+            else Console.Write($"{matr[i, m],6}");
         }
         Console.WriteLine();
     }
