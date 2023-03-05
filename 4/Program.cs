@@ -13,44 +13,38 @@
 7+9+8 = 24
 */
 // Создание двумерного массива, заполненного псевдослучайными числами
-/*
-Console.WriteLine("Сумма побочной диагонали:");
-EnterUsEl = new int[n, m];
-int sum = 0;
-for (int i = n - 1; i >= 0; --i) {
-    for (int j = m - 1; j >= 0; --j) {
-        if (i == j)
-            sum += array[i, j];
+int[,] GetMatrix(int rows, int cols, int minValue, int maxValue)
+{
+    int[,] matrix = new int[rows, cols];
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            matrix[i, j] = new Random().Next(minValue, maxValue + 1);
+        }
+    }
+    return matrix;
+}
+// использовать метод для распечатывания
+void PrintMatrix(int[,] matr)
+{
+    for (int i = 0; i < matr.GetLength(0); i++)
+    {
+        for (int j = 0; j < matr.GetLength(1); j++)
+        {
+            if (j < matr.GetLength(1) - 1) Console.Write($"{matr[i, j],8}");
+            else Console.Write($"{matr[i, j],8}");
+        }
+        Console.WriteLine();
     }
 }
-
-int[,] array2D = GetMatrix(3, 4, 1, 9);
-PrintMatrix(array2D);
-
-int[] arrElem = EnterUsEl("Введите позицию элемента в двумерном массиве (строки и столбца через Enter): ");
-*/
-Console.WriteLine("Введите количество строк:");
-            int n = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите количество столбцов:");
-            int m = Convert.ToInt32(Console.ReadLine());
-            int[,] array = new int[n, m];
-            Console.WriteLine("Вводите числа:");
-            for (int i = 0; i < n; ++i)
-            {
-                for (int j = 0; j < m; ++j)
-                {
-                    array[i, j] = Convert.ToInt32(Console.ReadLine());
-                }
-            }
-            
-            Console.WriteLine("Сумма побочной диагонали:");
-            int sum = 0;
-            for (int i = n-1; i >= 0; --i)
-            {
-                for (int j = m-1; j >= 0; --j)
-                {
-                    sum += array[i, j];
-                }
-            }
-            Console.WriteLine(sum);
-            Console.ReadLine();
+Console.WriteLine("\t\tЭлементы массива"); // заголовок
+int[,] array2D = GetMatrix(6, 6, 1, 9);
+PrintMatrix(array2D); // распечатать массив
+int Diag = 0, DownTr = 0, UpTr = 0; // задать параметры 
+for (int i = 0; i < array2D.GetLength(0); i++)
+    for (int j = 0; j < array2D.GetLength(1); j++)
+        if (i > j) DownTr += array2D[i, j];
+        else if (i < j) UpTr += array2D[i, j];
+        else Diag += array2D[i, j];
+Console.WriteLine("Сумма треугольника снизу = {0:d} \nСумма треугольника сверху = {1:d} \nСумма элементов главной диагонали = {2:d}", DownTr, UpTr, Diag);
