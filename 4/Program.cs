@@ -52,4 +52,3 @@ for (int i = 0; i < array2D.GetLength(0); i++)
         Diag += array2D[i, j];
       
 Console.WriteLine("\nСумма элементов главной диагонали = {0}", Diag);
-
