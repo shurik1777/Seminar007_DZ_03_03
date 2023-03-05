@@ -32,12 +32,14 @@ void PrintMatrix(int[,] matr)
     {
         for (int j = 0; j < matr.GetLength(1); j++)
         {
-            if (j < matr.GetLength(1) - 1) Console.Write($"{matr[i, j],8}");
-            else Console.Write($"{matr[i, j],8}");
+            if (j == i) Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write($"{matr[i, j]}\t");
+            Console.ResetColor();
         }
         Console.WriteLine();
     }
 }
+
 Console.WriteLine("\t\tЭлементы массива"); // заголовок
 int[,] array2D = GetMatrix(6, 6, 1, 9);
 PrintMatrix(array2D); // распечатать массив
@@ -46,5 +48,8 @@ for (int i = 0; i < array2D.GetLength(0); i++)
     for (int j = 0; j < array2D.GetLength(1); j++)
         if (i > j) DownTr += array2D[i, j];
         else if (i < j) UpTr += array2D[i, j];
-        else Diag += array2D[i, j];
-Console.WriteLine("Сумма треугольника снизу = {0:d} \nСумма треугольника сверху = {1:d} \nСумма элементов главной диагонали = {2:d}", DownTr, UpTr, Diag);
+        else 
+        Diag += array2D[i, j];
+      
+Console.WriteLine("\nСумма элементов главной диагонали = {0}", Diag);
+
